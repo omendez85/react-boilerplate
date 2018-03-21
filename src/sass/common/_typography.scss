@@ -1,0 +1,110 @@
+// FONT BASE
+$baseFontSize: 16px;
+
+//FONT FAMILY
+$font-default: Arial,Helvetica,sans-serif;
+
+/**
+ Font sizes and line-heights
+*/
+$font-scale: (
+    peta: (
+        size: 104,
+        height: 112
+    ),
+    tera: (
+        size: 72,
+        height: 83
+    ),
+    omni: (
+        size: 40,
+        height: 44
+    ),
+    giga: (
+        size: 32,
+        height: 48
+    ),
+    omega: (
+        size: 28,
+        height: 34
+    ),
+    mega: (
+        size: 26,
+        height: 32
+    ),
+    kilo: (
+        size: 24,
+        height: 30
+    ),
+    alpha: (
+        size: 20,
+        height: 28
+    ),
+    beta: (
+        size: 18,
+        height: 26
+    ),
+    gamma: (
+        size: 16,
+        height: 22
+    ),
+    delta: (
+        size: 14,
+        height: 20
+    ),
+    epsilon: (
+        size: 13,
+        height: 18
+    ),
+    zeta: (
+        size: 12,
+        height: 18
+    ),
+    micro: (
+        size: 11,
+        height: 18
+    ),
+    milli: (
+        size: 10,
+        height: 18
+    ),
+    mini: (
+        size: 9,
+        height: 18
+    ),
+    nano: (
+        size: 6,
+        height: 14
+    )
+);
+
+@mixin set-type-size($font-size) {
+    font-size: get-type-size($font-size)* 1px;
+    line-height: get-type-height($font-size)* 1px;
+}
+
+@function get-type-size($font-size) {
+    $converted-size: map-deep-get($font-scale, $font-size, size);
+    //get the $font-scale font size and set the vertical rhythm
+    @return $converted-size;
+}
+
+@function get-type-height($font-size) {
+    $converted-size: map-deep-get($font-scale, $font-size, height);
+    //get the $font-scale font size and set the vertical rhythm
+    @return $converted-size;
+}
+
+@function map-deep-get($map, $keys...) {
+    $value: $map;
+    @each $key in $keys {
+        $value: map-get($value, $key);
+    }
+    @return $value;
+}
+
+@each $font, $value in $font-scale {
+    .font-#{$font} {
+        @include set-type-size(#{$font});
+    }
+}
