@@ -15,7 +15,7 @@ const aliases = {};
 const nameSpacePrefix = 'app.';
 
 // Match file extensions
-const filesMatch = '/**/*.*(js)';
+const filesMatch = '/**/*.*(js|jsx)';
 
 // Source Directories for JS Files
 const srcFolder = [

@@ -28,6 +28,5 @@ http://localhost:3000
 
 ## TODO
 - Fix DEV - PROD Webpack enviroment
-- Add Jest functionality
 - Add Redux
 - Add Router
