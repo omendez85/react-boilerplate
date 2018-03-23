@@ -24,7 +24,15 @@ const srcFolder = [
 
 srcFolder.forEach(function (src) {
   glob.sync(src + filesMatch, {}).forEach(function (file) {
-    aliases[ nameSpacePrefix + path.basename(file, path.extname(file)) ] = path.resolve('./', file);
+    let directory;
+    if ( file.split('/').length > 3) {
+      directory = file.split('/');
+      directory = `${directory[directory.length - 2]}.`;
+    } else {
+      directory = ''; 
+    }
+    console.log(directory)
+    aliases[ nameSpacePrefix + directory + path.basename(file, path.extname(file)) ] = path.resolve('./', file);
   });
 });
 

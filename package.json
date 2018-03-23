@@ -8,8 +8,8 @@
 	},
 	"author": "Oscar Mendez",
 	"scripts": {
-		"develop": "gulp NODE_ENV=development",
-		"prod": "build:prod NODE_ENV=production",
+		"develop": "gulp --mode development",
+		"prod": "gulp build:prod --mode production",
 		"eslintfix": "eslint ./src/js --ext .js --fix",
 		"prestart": "yarn run eslintfix",
 		"test": "jest"
